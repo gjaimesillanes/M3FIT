@@ -1,7 +1,7 @@
 ---
 const {
-  title = "SMAX — Multi-Species LTE Fitting",
-  description = "A scientific software project for molecular spectral analysis."
+  title = "M³FIT — Multi-species Molecular ML-assisted FITting | AI-ITACA",
+  description = "HPC-based multi-species LTE spectral fitting assisted by machine learning, for complete ALMA spectral cubes. Developed within AI-ITACA (CSIC / Centro de Astrobiología)."
 } = Astro.props;
 ---
 <!doctype html>
@@ -27,6 +27,8 @@ const {
     --muted: #696963;
     --line: #d7d7d0;
     --soft: #eaeae4;
+    --accent: #b3432b;
+    --accent-soft: #e7cec7;
     --mono: "DM Mono", monospace;
     --sans: "Manrope", sans-serif;
   }
@@ -56,6 +58,7 @@ const {
   .button:hover { background: transparent; color: var(--ink); opacity: 1; }
   .button.light { background: transparent; color: var(--ink); }
   .button.light:hover { background: var(--ink); color: var(--paper); }
+  .accent { color: var(--accent); }
   .section { padding: 100px 0; }
   .section-head { display: grid; grid-template-columns: 1fr 2fr; gap: 40px; margin-bottom: 48px; }
   .section-head h2 { margin: 0; font-size: clamp(32px, 5vw, 58px); line-height: .98; letter-spacing: -.06em; font-weight: 600; }
