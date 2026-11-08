@@ -1,5 +1,8 @@
 
-name: Deploy Astro site to GitHub Pages
+name: Build and upload
+uses: withastro/action@v6
+with:
+  package-manager: npm
 
 on:
   push:
