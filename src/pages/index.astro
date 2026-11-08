@@ -27,68 +27,61 @@ const metrics = [
 ];
 ---
 <BaseLayout>
-  <div class="topline">
-    <a class="brand" href="#top"><span class="brand-mark">M³</span><span>AI-ITACA / ASTROCHEMISTRY SOFTWARE</span></a>
-    <nav aria-label="Main navigation">
-      <a href="#about">ABOUT</a><a href="#workflow">INTERFACE</a><a href="#science">SCIENCE</a><a href="#team">TEAM</a>
-    </nav>
-    <a class="top-cta" href="https://github.com/" target="_blank" rel="noreferrer">GITHUB ↗</a>
-  </div>
-
-  <main id="top">
-    <section class="hero wrap">
-      <div class="hero-grid">
-        <div class="hero-copy">
-          <span class="eyebrow">AI-ITACA / MMT24-CAB-01 · MOMENTUM PROGRAM</span>
-          <h1>M<sup>3</sup>FIT<span class="period">.</span></h1>
-          <p class="hero-description">HPC-based multi-species LTE spectral fitting, assisted by machine learning, for complete ALMA spectral cubes.</p>
-          <div class="hero-actions">
-            <a class="button" href="#about">EXPLORE THE PROJECT <span>↘</span></a>
-            <a class="text-link mono" href="#workflow">DISCOVER THE INTERFACE ↗</a>
-          </div>
-          <div class="hero-tags mono">
-            <span>HPC</span><span>LTE</span><span>ML</span><span>SLURM</span><span>ALMA</span>
-          </div>
+  <section id="top" class="hero-banner" aria-label="NGC 6523 Lagoon Nebula background banner">
+    <div class="hero-banner-media">
+      <Image src={ngc6523} alt="NGC 6523, the Lagoon Nebula, illustrative deep-sky background" width={2400} />
+    </div>
+    <div class="hero-banner-overlay"></div>
+    <div class="topline">
+      <a class="brand" href="#top"><span class="brand-mark">M³</span><span>AI-ITACA PROJECT</span></a>
+      <nav aria-label="Main navigation">
+        <a href="#about">ABOUT</a><a href="#workflow">INTERFACE</a><a href="#science">SCIENCE</a>
+      </nav>
+      <a class="top-cta" href="https://github.com/" target="_blank" rel="noreferrer">GITHUB ↗</a>
+    </div>
+    <div class="hero-content wrap hero-layout">
+      <div class="hero-copy">
+        <div class="logo-row" aria-label="Project logos">
+          <img src="/M3FIT/logos/LOGO-CAB_VERSION-COMPACTA_COLOR_FONDO-BLN-CIRCTRANS-CUADR_low-300x300.png" alt="CAB logo" />
+          <img src="/M3FIT/logos/Momentum-sinfondo-e1722340304295.png" alt="Momentum logo" />
+          <img src="/M3FIT/logos/logo-CSIC-big.jpg" alt="CSIC logo" />
         </div>
-        <div class="app-window" aria-label="M3FIT application preview">
-          <div class="app-titlebar">
-            <span class="dot"></span><span class="dot"></span><span class="dot"></span>
-            <span class="app-path mono">m3fit / single-species-viewer</span>
-          </div>
-          <div class="app-tabs mono" aria-label="Application tabs preview">
-            {tabs.slice(0, 5).map((t, i) => <span class={`tab ${i === 3 ? "active" : ""}`}>{t}</span>)}
-          </div>
-          <div class="app-body">
-            <aside class="app-sidebar mono">
-              <span class="eyebrow">PARAMETERS</span>
-              {metrics.map(([k, v]) => <div class="chip"><span>{k}</span><strong>{v}</strong></div>)}
-            </aside>
-            <div class="app-graphic">
-              <div class="graphic-label mono">FIG. 01 / SPECTRAL SIGNATURE</div>
-              <svg viewBox="0 0 1100 250" role="img" aria-label="Illustrative molecular spectral lines">
-                <path class="axis" d="M0 205H1100 M40 20V220" />
-                <path class="gridline" d="M40 65H1100 M40 135H1100" />
-                <path class="spectrum" d="M40 203 L100 202 145 200 185 201 220 197 245 188 260 100 270 185 290 198 340 201 390 199 420 193 438 150 450 196 480 201 535 199 565 194 590 75 603 188 620 198 680 201 720 199 745 182 765 120 778 190 805 199 850 201 900 200 925 188 940 45 953 185 975 199 1030 202 1100 201" />
-                <path class="peak" d="M260 100V220 M590 75V220 M940 45V220" />
-                <circle cx="260" cy="100" r="4"/><circle cx="590" cy="75" r="4"/><circle cx="940" cy="45" r="4"/>
-              </svg>
-              <div class="graphic-foot mono"><span>INTENSITY</span><span>FREQUENCY →</span><span>ILLUSTRATIVE DATA</span></div>
-            </div>
-          </div>
+        <strong>(Multi-species Molecular Machine-learning-assisted FITting)</strong>
+        <h1>M<sup>3</sup>FIT<span class="period">.</span></h1>
+        <p class="hero-description">An HPC-based multi-species LTE spectral fitting tool, assisted by machine learning, for complete ALMA spectral cubes modelling.</p>
+      </div>
+      <div class="hero-slideshow" aria-label="Diffusion image carousel">
+        <div class="slideshow-frame">
+          <img src="/M3FIT/diffusion/22.png" alt="Diffusion visualization" class="slide active" />
+          <img src="/M3FIT/diffusion/23.png" alt="Diffusion visualization" class="slide" />
+          <img src="/M3FIT/diffusion/24.png" alt="Diffusion visualization" class="slide" />
+          <img src="/M3FIT/diffusion/25.png" alt="Diffusion visualization" class="slide" />
+          <img src="/M3FIT/diffusion/26.png" alt="Diffusion visualization" class="slide" />
+          <img src="/M3FIT/diffusion/27.png" alt="Diffusion visualization" class="slide" />
+          <img src="/M3FIT/diffusion/28.png" alt="Diffusion visualization" class="slide" />
+          <img src="/M3FIT/diffusion/29.png" alt="Diffusion visualization" class="slide" />
+          <img src="/M3FIT/diffusion/30.png" alt="Diffusion visualization" class="slide" />
+          <img src="/M3FIT/diffusion/31.png" alt="Diffusion visualization" class="slide" />
         </div>
       </div>
-    </section>
+      <div class="hero-actions">
+        <a class="button" href="#about">EXPLORE THE PROJECT <span>↘</span></a>
+        <a class="text-link mono" href="#workflow">DISCOVER THE INTERFACE ↗</a>
+      </div>
+      <div class="hero-tags mono">
+        <span>HPC</span><span>LTE</span><span>ML</span><span>SLURM</span><span>ALMA</span>
+      </div>
+    </div>
+    <span class="hero-scroll mono">SCROLL ↓</span>
+  </section>
 
+  <main>
     <section id="about" class="section wrap">
       <div class="section-head">
         <span class="eyebrow">01 / THE PROJECT</span>
-        <div><h2>From spectral cubes<br />to physical insight.</h2></div>
+        <div><h2>Spectral cubes Fitting<br />+ ML  Assitance.</h2></div>
       </div>
-      <figure class="about-banner">
-        <Image src={ngc6523} alt="NGC 6523, the Lagoon Nebula, illustrative deep-sky observation" width={1400} />
-        <figcaption class="mono">NGC 6523 · LAGOON NEBULA (ILLUSTRATIVE)</figcaption>
-      </figure>
-      <div class="about-text">
+      <div class="about-full">
         <p><strong>M³FIT</strong> <strong>(Multi-species Molecular Machine-learning-assisted FITting)</strong> tool is a High-Performance Computing (HPC)-based software developed within the framework of the <strong>Artificial Intelligence Integral Tool for AstroChemical Analysis</strong> (<strong>AI-ITACA</strong>, ID: MMT24-CAB-01 - Momentum program). It combines multi-species Local Thermodynamic Equilibrium (LTE) spectral fitting with Machine Learning (ML) techniques to enable the efficient and semi-automated characterization of complete ALMA spectral cubes. Running on a SLURM-managed HPC infrastructure, the tool is designed to identify suitable molecular transitions, optimize fitting strategies, and characterize large numbers of spatial pixels across spectral cubes. Depending on the available observational constraints, it derives key physical parameters, including column density (log <em>N</em>), excitation temperature <em>T</em>ex, line-of-sight velocity <em>V</em>LSR, and linewidth (Full Width at Half Maximum, FWHM), producing spatially resolved FITS maps, synthetic LTE spectra, and fitting diagnostics to assess the quality of the solutions. The initial scientific exploitation will focus on the identification and characterization of molecular sources using datasets from GUAPOS project and ALMA Science Verification observations.</p>
       </div>
       <div class="stat-grid">
@@ -101,42 +94,58 @@ const metrics = [
 
     <section id="workflow" class="section panel">
       <div class="wrap">
+        <div class="plot-figure">
+          <img src="/M3FIT/plots/plot-23.png" alt="Scientific plot illustrating the fitting workflow and spectral characterization" />
+        </div>
         <div class="section-head">
-          <span class="eyebrow">02 / INTERFACE & CAPABILITIES</span>
-          <div><h2>Built around<br />the fitting pipeline.</h2>
-            <p>Each stage of the analysis — from cube ingestion to volumetric inspection — is exposed as a dedicated tab in the application, mirroring the actual processing pipeline used to characterize ALMA spectral cubes.</p>
-          </div>
+          <span class="eyebrow">02 / WORKFLOW</span>
+          <div><h2>Workflow:</h2></div>
         </div>
-        <div class="feature-grid">
-          {features.map(([n, title, desc]) => <article class="feature-card">
-            <span class="eyebrow">{n} / CAPABILITY</span><h3>{title}</h3><p>{desc}</p><span class="feature-arrow accent">↗</span>
-          </article>)}
-        </div>
-        <div class="tab-strip mono" aria-label="Application tabs">
-          {tabs.map((t, i) => <span class={`tab ${i === 3 ? "active" : ""}`}>{t}</span>)}
-        </div>
-      </div>
-    </section>
 
-    <section id="science" class="section wrap">
-      <div class="section-head">
-        <span class="eyebrow">03 / OUTPUT PARAMETERS</span>
-        <div><h2>Quantifying the<br />molecular gas.</h2>
-          <p>Depending on the available observational constraints, the fitting procedure derives key physical parameters and produces spatially resolved FITS maps, synthetic LTE spectra and fitting diagnostics to assess the quality of each solution.</p>
+        <div class="workflow-grid">
+          <article class="workflow-step">
+            <span class="step-number">01</span>
+            <h3>Launch and configure</h3>
+            <p>Start the application and initialize the fitting environment on the HPC cluster. The interface is designed to keep the setup simple while preserving full control over the analysis configuration.</p>
+          </article>
+
+          <article class="workflow-step">
+            <span class="step-number">02</span>
+            <h3>Upload observational data</h3>
+            <p>Load the ALMA spectral cubes, molecular catalogs, and fitting parameters needed to define the target species and the spectral region to be modeled.</p>
+          </article>
+
+          <article class="workflow-step">
+            <span class="step-number">03</span>
+            <h3>Run the LTE fitting</h3>
+            <p>Submit multi-pixel fitting jobs through SLURM, monitor their execution, and use ML-assisted recommendations to guide the selection of the most appropriate spectral strategy.</p>
+          </article>
+
+          <article class="workflow-step">
+            <span class="step-number">04</span>
+            <h3>Inspect and validate results</h3>
+            <p>Examine fitted spectra, convergence diagnostics, and spatially resolved parameter maps to verify the physical consistency of each solution across the cube.</p>
+          </article>
         </div>
-      </div>
-      <div class="parameter-layout">
-        <div class="parameter-list panel-card">
-          {parameters.map((p, i) => <div class="parameter"><span class="eyebrow">0{i+1}</span><strong>{p}</strong><span class="parameter-arrow">↗</span></div>)}
-        </div>
-        <div class="output-card panel-card">
-          <span class="eyebrow">OUTPUT / PRODUCTS</span>
-          <div class="output-visual">
-            <div class="map-grid"></div>
-            <div class="map-cross"></div>
-            <span class="map-tag mono">PIXEL MAP / PREVIEW</span>
-          </div>
-          <p>Spatially resolved FITS maps, synthetic LTE spectra and fitting diagnostics per pixel and per species.</p>
+
+        <div class="demo-gallery" aria-label="M3FIT workflow demonstrations">
+          <article class="demo-card">
+            <h3>1. Launch the App</h3>
+            <img src="/M3FIT/demo/launch-app.gif" alt="Launch the app demo animation" />
+          </article>
+
+          <article class="demo-card">
+            <h3>2. Upload Files and Launch the Fitting Jobs</h3>
+            <img src="/M3FIT/demo/upload-and-launch.gif" alt="Upload files and launch fitting jobs demo animation" />
+          </article>
+
+          <article class="demo-card demo-card-wide">
+            <h3>3. Visualize Progress and Fitted Spectrum (Per pixel)</h3>
+            <div class="demo-inline">
+              <img src="/M3FIT/demo/progress-spectrum-1.gif" alt="Progress monitoring demo animation" />
+              <img src="/M3FIT/demo/progress-spectrum-2.gif" alt="Fitted spectrum per pixel demo animation" />
+            </div>
+          </article>
         </div>
       </div>
     </section>
@@ -144,17 +153,17 @@ const metrics = [
     <section class="context panel">
       <div class="wrap context-inner">
         <span class="eyebrow">04 / SCIENTIFIC MOTIVATION</span>
-        <h2>Understanding the<br /><em>molecular inventory</em><br />of the interstellar medium.</h2>
-        <p>The increasing complexity of molecules identified in the interstellar medium (ISM), together with the unprecedented sensitivity of modern facilities such as ALMA and the James Webb Space Telescope (JWST), is opening new opportunities to investigate the molecular inventory of the Universe. However, the rapidly increasing volume of astronomical data, particularly with the forthcoming ALMA Wideband Sensitivity Upgrade (WSU), poses major challenges to conventional approaches for spectral analysis and molecular characterization. Developing automated, scalable, and efficient techniques is therefore essential to fully exploit these observations. By combining physically motivated LTE modelling, ML-assisted analysis, and HPC capabilities, this tool aims to accelerate the extraction of astrochemical information from large spectroscopic datasets, contributing to a more comprehensive understanding of molecular complexity in the ISM and the potential role of interstellar chemistry in the emergence of prebiotic building blocks.</p>
+        <h2>Objective:<br /><em>Identification of optimal LTE transition lines</em><br />and characterization of multiple voxels in spectral cubes</h2>
+        <p>The identification of optimal transition lines is a central requirement for achieving robust LTE convergence in molecular line analysis. The increasing complexity and size of spectral cubes make it necessary to automate the selection of physically suitable transitions and to apply reproducible fitting strategies across large data sets. M³FIT addresses these challenges by combining LTE spectral modeling with machine-learning-assisted optimization to identify well-constrained transitions and to enable the spatial characterization of multiple voxels within spectral cubes.</p>
       </div>
+    </section>
+
+    <section class="section wrap">
+      <p class="funding-note">“The funding for these actions/grants and contracts comes from the European Union's Recovery and Resilience Facility-Next Generation, in the framework of the General Invitation of the Spanish Government’s public business entity Red.es to participate in talent attraction and retention programmes within Investment 4 of Component 19 of the Recovery, Transformation and Resilience Plan”.</p>
     </section>
 
     <section id="team" class="section wrap team">
       <div class="section-head">
-        <span class="eyebrow">05 / FRAMEWORK & DATA</span>
-        <div><h2>Developed for<br />collaborative science.</h2>
-          <p>M³FIT is developed within AI-ITACA. Initial scientific exploitation focuses on molecular-source identification and characterization using datasets from the GUAPOS project and ALMA Science Verification observations.</p>
-        </div>
       </div>
       <div class="data-strip panel-card">
         <span class="eyebrow">INITIAL DATASETS</span>
@@ -179,6 +188,19 @@ const metrics = [
   </footer>
 </BaseLayout>
 
+<script>
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  let currentSlide = 0;
+
+  if (slides.length > 1) {
+    setInterval(() => {
+      slides[currentSlide].classList.remove('active');
+      currentSlide = (currentSlide + 1) % slides.length;
+      slides[currentSlide].classList.add('active');
+    }, 1800);
+  }
+</script>
+
 <style>
   .topline { height: 72px; display:flex; align-items:center; justify-content:space-between; padding:0 max(24px, calc((100vw - 1160px)/2)); border-bottom:1px solid var(--line); gap:24px; }
   .brand { display:flex; align-items:center; gap:12px; font:10px var(--mono); letter-spacing:.08em; }
@@ -189,28 +211,56 @@ const metrics = [
   .top-cta { font:10px var(--mono); border:1px solid var(--ink); border-radius:999px; padding:7px 14px; }
   .top-cta:hover { background:var(--ink); color:var(--paper); opacity:1; }
 
-  .hero { padding:52px 0 72px; }
-  .hero-grid { display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:start; }
-  .hero-copy h1 { font-size:clamp(40px, 6vw, 72px); line-height:1; letter-spacing:-.03em; font-weight:800; margin:14px 0 18px; }
+  .hero-banner { position:relative; min-height:100vh; display:flex; flex-direction:column; justify-content:center; overflow:hidden; color:#fff; }
+  .hero-banner-media { position:absolute; inset:0; z-index:0; }
+  .hero-banner-media img { display:block; width:100%; height:100%; object-fit:cover; filter:grayscale(1) contrast(1.1) brightness(.7); }
+  .hero-banner-overlay { position:absolute; inset:0; z-index:1; background:linear-gradient(180deg, rgba(0,0,0,.42) 0%, rgba(0,0,0,.32) 42%, rgba(0,0,0,.8) 100%); }
+  .hero-banner .topline { position:absolute; top:0; left:0; right:0; z-index:3; background:transparent; border-bottom:1px solid rgba(255,255,255,.18); }
+  .hero-banner .brand,.hero-banner nav a,.hero-banner .top-cta { color:#fff; }
+  .hero-banner .brand-mark { border-color:#fff; }
+  .hero-banner nav a:hover { border-color:rgba(255,255,255,.4); color:#fff; }
+  .hero-banner .top-cta { border-color:#fff; }
+  .hero-banner .top-cta:hover { background:#fff; color:#111; }
+
+  .hero-content { position:relative; z-index:2; padding-top:56px; }
+  .hero-layout { display:grid; grid-template-columns:minmax(0, 1.2fr) minmax(380px, 660px); align-items:center; gap:32px; }
+  .hero-copy { max-width:680px; }
+  .logo-row { display:flex; align-items:center; justify-content:flex-start; gap:18px; flex-wrap:nowrap; margin:0 0 14px; max-width:100%; }
+  .logo-row img { height:138px; width:auto; max-width:250px; object-fit:contain; filter: brightness(1.05); }
+  .hero-content .eyebrow { color:rgba(255,255,255,.75); }
+  .hero-content h1 { font-size:clamp(48px, 8vw, 108px); line-height:.95; letter-spacing:-.03em; font-weight:800; margin:16px 0 20px; color:#fff; }
   .period { font-weight:400; }
-  .hero-description { max-width:440px; font-size:18px; line-height:1.6; color:var(--muted); margin:0 0 28px; }
-  .hero-actions { display:flex; align-items:center; gap:24px; margin-bottom:26px; }
+  .hero-content .hero-description { max-width:520px; font-size:clamp(16px, 2.2vw, 20px); line-height:1.6; color:rgba(255,255,255,.86); margin:0 0 30px; }
+  .hero-slideshow { justify-self:end; align-self:center; width:min(100%, 660px); margin-top:20px; }
+  .slideshow-frame { position:relative; width:100%; aspect-ratio:1 / 1; overflow:hidden; border-radius:18px; border:1px solid rgba(255,255,255,.5); background:rgba(255,255,255,.08); box-shadow:0 30px 80px rgba(0,0,0,.38); backdrop-filter:blur(12px); }
+  .slideshow-frame .slide { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transition:opacity 0.9s ease; }
+  .slideshow-frame .slide.active { opacity:1; }
+  .hero-content .hero-actions { display:flex; align-items:center; gap:24px; margin-bottom:28px; }
+  .hero-content .button { background:#fff; color:#111; border-color:#fff; }
+  .hero-content .button:hover { background:transparent; color:#fff; }
+  .hero-content .text-link { color:#fff; }
+  .hero-content .hero-tags span { border-color:rgba(255,255,255,.4); color:rgba(255,255,255,.88); }
+  .hero-scroll { position:absolute; left:50%; bottom:26px; transform:translateX(-50%); z-index:2; font-size:10px; letter-spacing:.16em; color:rgba(255,255,255,.72); }
+
   .text-link { font-size:10px; }
   .hero-tags { display:flex; flex-wrap:wrap; gap:8px; }
   .hero-tags span { border:1px solid var(--line); border-radius:999px; padding:6px 12px; font-size:10px; letter-spacing:.06em; color:var(--muted); }
 
-  .app-window { border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; background:var(--paper); }
-  .app-titlebar { display:flex; align-items:center; gap:7px; padding:10px 14px; border-bottom:1px solid var(--line); background:var(--soft); }
-  .dot { width:9px; height:9px; border-radius:50%; background:#c7c7c0; }
-  .dot:nth-child(2) { background:#b3b3aa; }
-  .dot:nth-child(3) { background:#9c9c92; }
-  .app-path { margin-left:auto; color:var(--muted); font-size:10px; letter-spacing:.04em; }
-  .app-tabs { display:flex; gap:0; overflow-x:auto; border-bottom:1px solid var(--line); padding:0 12px; }
-  .app-body { display:grid; grid-template-columns:132px 1fr; }
-  .app-sidebar { border-right:1px solid var(--line); background:var(--soft); padding:14px 12px; display:flex; flex-direction:column; gap:10px; }
-  .chip { display:flex; justify-content:space-between; gap:6px; border:1px solid var(--line); border-radius:6px; padding:6px 8px; font-size:10px; background:var(--paper); }
-  .chip strong { font-size:11px; }
-  .app-graphic { padding:14px 16px 10px; }
+  #workflow .wrap { width: min(1600px, calc(100% - 12px)); }
+  .plot-figure { margin:8px 0 36px; background:var(--paper); border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; box-shadow:0 18px 40px rgba(17,17,17,.04); }
+  .plot-figure img { display:block; width:100%; height:min(70vh, 760px); min-height:520px; object-fit:contain; background:#fff; padding:12px; box-sizing:border-box; }
+  .workflow-grid { display:grid; grid-template-columns:repeat(4, minmax(0, 1fr)); gap:18px; margin:32px 0 40px; }
+  .workflow-step { background:var(--paper); border:1px solid var(--line); border-radius:var(--radius); padding:22px 20px; min-height:240px; }
+  .step-number { display:inline-block; margin-bottom:18px; font:10px var(--mono); letter-spacing:.08em; color:var(--muted); }
+  .workflow-step h3 { margin:0 0 12px; font-size:22px; line-height:1.2; letter-spacing:-.03em; }
+  .workflow-step p { margin:0; color:var(--muted); line-height:1.7; font-size:14px; }
+
+  .demo-gallery { display:grid; grid-template-columns:repeat(2, minmax(0, 1fr)); gap:28px; margin:0 0 44px; }
+  .demo-card { background:var(--paper); border:1px solid var(--line); border-radius:var(--radius); padding:22px; }
+  .demo-card h3 { margin:0 0 14px; font-size:18px; letter-spacing:-.02em; }
+  .demo-card img { display:block; width:100%; border:1px solid var(--line); border-radius:10px; background:#fff; }
+  .demo-card-wide { grid-column:1 / -1; }
+  .demo-inline { display:grid; grid-template-columns:repeat(2, minmax(0, 1fr)); gap:18px; }
 
   .tab { font-size:10px; letter-spacing:.06em; color:var(--muted); border-bottom:2px solid transparent; }
   .tab.active { color: var(--accent); border-bottom-color: var(--accent); font-weight:600; }
@@ -228,12 +278,10 @@ const metrics = [
   .section { padding:90px 0; }
   .panel { background:var(--soft); }
 
-  .about-banner { margin:0 0 32px; border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; background:var(--soft); }
-  .about-banner img { display:block; width:100%; height:clamp(220px, 32vw, 420px); object-fit:cover; filter:grayscale(1) contrast(1.05); }
-  .about-banner figcaption { padding:10px 14px; font-size:9px; letter-spacing:.08em; color:var(--muted); border-top:1px solid var(--line); }
-  .about-text { max-width:860px; margin-bottom:40px; }
-  .about-text p { color:var(--muted); line-height:1.85; font-size:15px; margin:0; }
-  .about-text strong { color:var(--ink); font-weight:700; }
+  .about-full { width:100%; margin-bottom:40px; }
+  .about-full p { color:var(--muted); line-height:1.9; font-size:15px; margin:0; max-width:100%; text-align:justify; }
+  .about-full strong { color:var(--ink); font-weight:700; }
+  .funding-note { margin:0 auto; color:var(--muted); font:20px/1.8 Georgia, serif; font-style:italic; text-align:center; max-width:960px; }
 
   .stat-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-top:8px; }
   .stat-card { border:1px solid var(--line); border-radius:var(--radius); padding:22px 20px; display:flex; flex-direction:column; gap:10px; background:var(--paper); }
@@ -282,13 +330,15 @@ const metrics = [
   .footer-inner { display:flex; align-items:center; justify-content:space-between; }
 
   @media(max-width:900px) {
-    .hero-grid { grid-template-columns:1fr; }
     .app-body { grid-template-columns:1fr; }
     .app-sidebar { flex-direction:row; flex-wrap:wrap; border-right:0; border-bottom:1px solid var(--line); }
   }
   @media(max-width:800px) {
     nav { display:none; }
     .topline { padding-inline:16px; }
+    .hero-layout { grid-template-columns:1fr; }
+    .hero-slideshow { width:min(100%, 540px); justify-self:start; }
+    .workflow-grid { grid-template-columns:repeat(2, minmax(0, 1fr)); }
     .stat-grid { grid-template-columns:repeat(2,1fr); }
     .feature-grid { grid-template-columns:repeat(2,1fr); }
     .parameter-layout { grid-template-columns:1fr; gap:24px; }
@@ -296,9 +346,10 @@ const metrics = [
     .context-inner h2,.context-inner p { grid-column:1; }
   }
   @media(max-width:520px) {
+    .workflow-grid, .demo-gallery, .demo-inline { grid-template-columns:1fr; }
     .stat-grid { grid-template-columns:1fr; }
     .feature-grid { grid-template-columns:1fr; }
-    .hero-actions { flex-direction:column; align-items:flex-start; gap:14px; }
+    .hero-content .hero-actions { flex-direction:column; align-items:flex-start; gap:14px; }
     .team-bottom,.footer-inner { align-items:flex-start; flex-direction:column; gap:18px; }
     .data-strip { align-items:flex-start; flex-direction:column; }
   }
