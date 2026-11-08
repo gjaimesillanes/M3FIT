@@ -1,5 +1,7 @@
 ---
+import { Image } from "astro:assets";
 import BaseLayout from "../layouts/BaseLayout.astro";
+import ngc6523 from "../assets/ngc6523-bvo.jpg";
 const features = [
   ["01", "Data ingestion & setup", "Upload ALMA spectral cubes, species catalogs and fitting configuration before launching a run."],
   ["02", "SLURM-managed fitting", "Launch and monitor multi-pixel, multi-species LTE fitting jobs across HPC resources, with ML-assisted strategy selection."],
@@ -17,6 +19,12 @@ const tabs = [
   "TMP: Launch Jobs by Epochs",
   "TMP: Transition Combo Maps"
 ];
+const metrics = [
+  ["Tex", "132 K"],
+  ["log N", "14.8"],
+  ["VLSR", "41.2 km/s"],
+  ["FWHM", "6.4 km/s"]
+];
 ---
 <BaseLayout>
   <div class="topline">
@@ -29,55 +37,71 @@ const tabs = [
 
   <main id="top">
     <section class="hero wrap">
-      <div class="hero-meta">
-        <span class="eyebrow">AI-ITACA / MMT24-CAB-01 · MOMENTUM PROGRAM</span>
-        <span class="eyebrow">HPC · LTE · MACHINE LEARNING</span>
-      </div>
-      <div class="hero-title">
-        <p class="hero-kicker mono">Multi-species Molecular ML-assisted FITting</p>
-        <h1>M<sup>3</sup>FIT<span class="period">.</span></h1>
-        <div class="hero-bottom">
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <span class="eyebrow">AI-ITACA / MMT24-CAB-01 · MOMENTUM PROGRAM</span>
+          <h1>M<sup>3</sup>FIT<span class="period">.</span></h1>
           <p class="hero-description">HPC-based multi-species LTE spectral fitting, assisted by machine learning, for complete ALMA spectral cubes.</p>
-          <p class="hero-index mono">A SLURM-managed workflow<br />from cubes to physical maps</p>
+          <div class="hero-actions">
+            <a class="button" href="#about">EXPLORE THE PROJECT <span>↘</span></a>
+            <a class="text-link mono" href="#workflow">DISCOVER THE INTERFACE ↗</a>
+          </div>
+          <div class="hero-tags mono">
+            <span>HPC</span><span>LTE</span><span>ML</span><span>SLURM</span><span>ALMA</span>
+          </div>
+        </div>
+        <div class="app-window" aria-label="M3FIT application preview">
+          <div class="app-titlebar">
+            <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+            <span class="app-path mono">m3fit / single-species-viewer</span>
+          </div>
+          <div class="app-tabs mono" aria-label="Application tabs preview">
+            {tabs.slice(0, 5).map((t, i) => <span class={`tab ${i === 3 ? "active" : ""}`}>{t}</span>)}
+          </div>
+          <div class="app-body">
+            <aside class="app-sidebar mono">
+              <span class="eyebrow">PARAMETERS</span>
+              {metrics.map(([k, v]) => <div class="chip"><span>{k}</span><strong>{v}</strong></div>)}
+            </aside>
+            <div class="app-graphic">
+              <div class="graphic-label mono">FIG. 01 / SPECTRAL SIGNATURE</div>
+              <svg viewBox="0 0 1100 250" role="img" aria-label="Illustrative molecular spectral lines">
+                <path class="axis" d="M0 205H1100 M40 20V220" />
+                <path class="gridline" d="M40 65H1100 M40 135H1100" />
+                <path class="spectrum" d="M40 203 L100 202 145 200 185 201 220 197 245 188 260 100 270 185 290 198 340 201 390 199 420 193 438 150 450 196 480 201 535 199 565 194 590 75 603 188 620 198 680 201 720 199 745 182 765 120 778 190 805 199 850 201 900 200 925 188 940 45 953 185 975 199 1030 202 1100 201" />
+                <path class="peak" d="M260 100V220 M590 75V220 M940 45V220" />
+                <circle cx="260" cy="100" r="4"/><circle cx="590" cy="75" r="4"/><circle cx="940" cy="45" r="4"/>
+              </svg>
+              <div class="graphic-foot mono"><span>INTENSITY</span><span>FREQUENCY →</span><span>ILLUSTRATIVE DATA</span></div>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="hero-graphic" aria-label="Abstract monochrome spectral line illustration">
-        <div class="graphic-label mono">FIG. 01 / SPECTRAL SIGNATURE</div>
-        <svg viewBox="0 0 1100 250" role="img" aria-label="Illustrative molecular spectral lines">
-          <path class="axis" d="M0 205H1100 M40 20V220" />
-          <path class="gridline" d="M40 65H1100 M40 135H1100" />
-          <path class="spectrum" d="M40 203 L100 202 145 200 185 201 220 197 245 188 260 100 270 185 290 198 340 201 390 199 420 193 438 150 450 196 480 201 535 199 565 194 590 75 603 188 620 198 680 201 720 199 745 182 765 120 778 190 805 199 850 201 900 200 925 188 940 45 953 185 975 199 1030 202 1100 201" />
-          <path class="peak" d="M260 100V220 M590 75V220 M940 45V220" />
-          <circle cx="260" cy="100" r="4"/><circle class="peak-accent" cx="590" cy="75" r="4"/><circle cx="940" cy="45" r="4"/>
-        </svg>
-        <div class="graphic-foot mono"><span>INTENSITY</span><span>FREQUENCY →</span><span>ILLUSTRATIVE DATA</span></div>
-      </div>
-      <div class="hero-actions">
-        <a class="button" href="#about">EXPLORE THE PROJECT <span>↘</span></a>
-        <a class="text-link mono" href="#workflow">DISCOVER THE INTERFACE ↗</a>
-      </div>
-    </section>
-
-    <section class="ticker" aria-label="Project keywords">
-      <div class="ticker-inner mono"><span>MOLECULAR SPECTROSCOPY</span><b>✳</b><span>LOCAL THERMODYNAMIC EQUILIBRIUM</span><b>✳</b><span>ALMA DATA</span><b>✳</b><span>SLURM / HPC</span><b>✳</b><span>MACHINE LEARNING</span></div>
     </section>
 
     <section id="about" class="section wrap">
       <div class="section-head">
         <span class="eyebrow">01 / THE PROJECT</span>
-        <div><h2>From spectral cubes<br />to physical insight.</h2>
-          <p>M³FIT (Multi-species Molecular Machine-learning-assisted FITting) is an HPC-based software tool developed within the Artificial Intelligence Integral Tool for AstroChemical Analysis (AI-ITACA, ID: MMT24-CAB-01 — Momentum program). It combines multi-species Local Thermodynamic Equilibrium (LTE) spectral fitting with machine-learning techniques to enable efficient, semi-automated characterization of complete ALMA spectral cubes.</p>
-        </div>
+        <div><h2>From spectral cubes<br />to physical insight.</h2></div>
       </div>
-      <div class="stat-row">
-        <div><strong>HPC</strong><span>SLURM-managed<br />job orchestration</span></div>
-        <div><strong>ML</strong><span>Strategy selection<br />and convergence guidance</span></div>
-        <div><strong>LTE</strong><span>Multi-species<br />spectral modelling</span></div>
-        <div><strong>FITS</strong><span>Spatially resolved<br />physical-parameter maps</span></div>
+      <div class="about-layout">
+        <div class="about-text">
+          <p><strong>M³FIT</strong> <strong>(Multi-species Molecular Machine-learning-assisted FITting)</strong> tool is a High-Performance Computing (HPC)-based software developed within the framework of the <strong>Artificial Intelligence Integral Tool for AstroChemical Analysis</strong> (<strong>AI-ITACA</strong>, ID: MMT24-CAB-01 - Momentum program). It combines multi-species Local Thermodynamic Equilibrium (LTE) spectral fitting with Machine Learning (ML) techniques to enable the efficient and semi-automated characterization of complete ALMA spectral cubes. Running on a SLURM-managed HPC infrastructure, the tool is designed to identify suitable molecular transitions, optimize fitting strategies, and characterize large numbers of spatial pixels across spectral cubes. Depending on the available observational constraints, it derives key physical parameters, including column density (log <em>N</em>), excitation temperature <em>T</em>ex, line-of-sight velocity <em>V</em>LSR, and linewidth (Full Width at Half Maximum, FWHM), producing spatially resolved FITS maps, synthetic LTE spectra, and fitting diagnostics to assess the quality of the solutions. The initial scientific exploitation will focus on the identification and characterization of molecular sources using datasets from GUAPOS project and ALMA Science Verification observations.</p>
+        </div>
+        <figure class="about-figure">
+          <Image src={ngc6523} alt="NGC 6523, the Lagoon Nebula, illustrative deep-sky observation" width={640} />
+          <figcaption class="mono">NGC 6523 · LAGOON NEBULA (ILLUSTRATIVE)</figcaption>
+        </figure>
+      </div>
+      <div class="stat-grid">
+        <div class="stat-card"><strong>HPC</strong><span>SLURM-managed<br />job orchestration</span></div>
+        <div class="stat-card"><strong>ML</strong><span>Strategy selection<br />and convergence guidance</span></div>
+        <div class="stat-card"><strong>LTE</strong><span>Multi-species<br />spectral modelling</span></div>
+        <div class="stat-card"><strong>FITS</strong><span>Spatially resolved<br />physical-parameter maps</span></div>
       </div>
     </section>
 
-    <section id="workflow" class="section dark">
+    <section id="workflow" class="section panel">
       <div class="wrap">
         <div class="section-head">
           <span class="eyebrow">02 / INTERFACE & CAPABILITIES</span>
@@ -86,8 +110,8 @@ const tabs = [
           </div>
         </div>
         <div class="feature-grid">
-          {features.map(([n, title, desc]) => <article class="feature">
-            <span class="eyebrow">{n} / CAPABILITY</span><h3>{title}</h3><p>{desc}</p><span class="feature-arrow accent">↗</span>
+          {features.map(([n, title, desc]) => <article class="feature-card">
+            <span class="eyebrow">{n} / CAPABILITY</span><h3>{title}</h3><p>{desc}</p><span class="feature-arrow">↗</span>
           </article>)}
         </div>
         <div class="tab-strip mono" aria-label="Application tabs">
@@ -104,10 +128,10 @@ const tabs = [
         </div>
       </div>
       <div class="parameter-layout">
-        <div class="parameter-list">
-          {parameters.map((p, i) => <div class="parameter"><span class="eyebrow">0{i+1}</span><strong>{p}</strong><span class="accent">↗</span></div>)}
+        <div class="parameter-list panel-card">
+          {parameters.map((p, i) => <div class="parameter"><span class="eyebrow">0{i+1}</span><strong>{p}</strong><span class="parameter-arrow">↗</span></div>)}
         </div>
-        <div class="output-card">
+        <div class="output-card panel-card">
           <span class="eyebrow">OUTPUT / PRODUCTS</span>
           <div class="output-visual">
             <div class="map-grid"></div>
@@ -119,11 +143,11 @@ const tabs = [
       </div>
     </section>
 
-    <section class="context">
+    <section class="context panel">
       <div class="wrap context-inner">
         <span class="eyebrow">04 / SCIENTIFIC MOTIVATION</span>
         <h2>Understanding the<br /><em>molecular inventory</em><br />of the interstellar medium.</h2>
-        <p>The increasing complexity of molecules identified in the ISM, together with the unprecedented sensitivity of facilities such as ALMA and JWST, is opening new opportunities to investigate molecular complexity. As data volumes grow further with the forthcoming ALMA Wideband Sensitivity Upgrade (WSU), automated and scalable analysis methods become essential — combining physically motivated LTE modelling, ML-assisted analysis and HPC capabilities to accelerate the extraction of astrochemical information and the study of prebiotic building blocks.</p>
+        <p>The increasing complexity of molecules identified in the interstellar medium (ISM), together with the unprecedented sensitivity of modern facilities such as ALMA and the James Webb Space Telescope (JWST), is opening new opportunities to investigate the molecular inventory of the Universe. However, the rapidly increasing volume of astronomical data, particularly with the forthcoming ALMA Wideband Sensitivity Upgrade (WSU), poses major challenges to conventional approaches for spectral analysis and molecular characterization. Developing automated, scalable, and efficient techniques is therefore essential to fully exploit these observations. By combining physically motivated LTE modelling, ML-assisted analysis, and HPC capabilities, this tool aims to accelerate the extraction of astrochemical information from large spectroscopic datasets, contributing to a more comprehensive understanding of molecular complexity in the ISM and the potential role of interstellar chemistry in the emergence of prebiotic building blocks.</p>
       </div>
     </section>
 
@@ -134,7 +158,7 @@ const tabs = [
           <p>M³FIT is developed within AI-ITACA. Initial scientific exploitation focuses on molecular-source identification and characterization using datasets from the GUAPOS project and ALMA Science Verification observations.</p>
         </div>
       </div>
-      <div class="data-strip">
+      <div class="data-strip panel-card">
         <span class="eyebrow">INITIAL DATASETS</span>
         <strong>GUAPOS</strong><strong>ALMA SCIENCE VERIFICATION</strong>
       </div>
@@ -158,74 +182,98 @@ const tabs = [
 </BaseLayout>
 
 <style>
-  .topline { height: 76px; display:flex; align-items:center; justify-content:space-between; padding:0 max(24px, calc((100vw - 1160px)/2)); border-bottom:1px solid var(--line); gap:24px; }
+  .topline { height: 72px; display:flex; align-items:center; justify-content:space-between; padding:0 max(24px, calc((100vw - 1160px)/2)); border-bottom:1px solid var(--line); gap:24px; }
   .brand { display:flex; align-items:center; gap:12px; font:10px var(--mono); letter-spacing:.08em; }
-  .brand-mark { display:grid; place-items:center; width:32px; height:32px; border:1px solid var(--ink); border-radius:50%; font:700 13px var(--sans); letter-spacing:-.04em; }
-  nav { display:flex; gap:28px; font:10px var(--mono); letter-spacing:.08em; }
-  .top-cta { font:10px var(--mono); border-bottom:1px solid; padding-bottom:4px; }
-  .hero { padding-top:44px; }
-  .hero-meta { display:flex; justify-content:space-between; }
-  .hero-title { padding:76px 0 54px; }
-  .hero-kicker { font-size:11px; letter-spacing:.14em; margin:0 0 6px; }
-  h1 { font-size:clamp(100px, 22vw, 270px); line-height:.78; letter-spacing:-.105em; font-weight:800; margin:0 0 35px -14px; }
+  .brand-mark { display:grid; place-items:center; width:30px; height:30px; border:1px solid var(--ink); border-radius:50%; font:700 12px var(--sans); letter-spacing:-.04em; }
+  nav { display:flex; gap:8px; font:10px var(--mono); letter-spacing:.06em; }
+  nav a { padding:7px 12px; border:1px solid transparent; border-radius:999px; color:var(--muted); }
+  nav a:hover { border-color:var(--line); opacity:1; color:var(--ink); }
+  .top-cta { font:10px var(--mono); border:1px solid var(--ink); border-radius:999px; padding:7px 14px; }
+  .top-cta:hover { background:var(--ink); color:var(--paper); opacity:1; }
+
+  .hero { padding:52px 0 72px; }
+  .hero-grid { display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:start; }
+  .hero-copy h1 { font-size:clamp(40px, 6vw, 72px); line-height:1; letter-spacing:-.03em; font-weight:800; margin:14px 0 18px; }
   .period { font-weight:400; }
-  .hero-bottom { display:flex; justify-content:space-between; align-items:end; }
-  .hero-description { max-width:410px; font-size:clamp(20px, 3vw, 30px); line-height:1.25; letter-spacing:-.04em; margin:0; }
-  .hero-index { font-size:10px; line-height:1.8; color:var(--muted); text-align:right; }
-  .hero-graphic { border:1px solid var(--line); padding:18px 18px 10px; background:#eeeeea; }
+  .hero-description { max-width:440px; font-size:18px; line-height:1.6; color:var(--muted); margin:0 0 28px; }
+  .hero-actions { display:flex; align-items:center; gap:24px; margin-bottom:26px; }
+  .text-link { font-size:10px; }
+  .hero-tags { display:flex; flex-wrap:wrap; gap:8px; }
+  .hero-tags span { border:1px solid var(--line); border-radius:999px; padding:6px 12px; font-size:10px; letter-spacing:.06em; color:var(--muted); }
+
+  .app-window { border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; background:var(--paper); }
+  .app-titlebar { display:flex; align-items:center; gap:7px; padding:10px 14px; border-bottom:1px solid var(--line); background:var(--soft); }
+  .dot { width:9px; height:9px; border-radius:50%; background:#c7c7c0; }
+  .dot:nth-child(2) { background:#b3b3aa; }
+  .dot:nth-child(3) { background:#9c9c92; }
+  .app-path { margin-left:auto; color:var(--muted); font-size:10px; letter-spacing:.04em; }
+  .app-tabs { display:flex; gap:0; overflow-x:auto; border-bottom:1px solid var(--line); padding:0 12px; }
+  .app-body { display:grid; grid-template-columns:132px 1fr; }
+  .app-sidebar { border-right:1px solid var(--line); background:var(--soft); padding:14px 12px; display:flex; flex-direction:column; gap:10px; }
+  .chip { display:flex; justify-content:space-between; gap:6px; border:1px solid var(--line); border-radius:6px; padding:6px 8px; font-size:10px; background:var(--paper); }
+  .chip strong { font-size:11px; }
+  .app-graphic { padding:14px 16px 10px; }
+
+  .tab { font-size:10px; letter-spacing:.06em; color:var(--muted); border-bottom:2px solid transparent; }
+  .tab.active { color:var(--ink); border-bottom-color:var(--ink); font-weight:600; }
+  .app-tabs .tab { padding:10px 10px; white-space:nowrap; }
+  .tab-strip .tab { padding:16px 18px 16px 0; margin-right:18px; }
+
   .graphic-label,.graphic-foot { display:flex; justify-content:space-between; color:var(--muted); font:9px var(--mono); letter-spacing:.08em; }
-  .hero-graphic svg { display:block; width:100%; height:auto; margin:12px 0 4px; }
+  .app-graphic svg { display:block; width:100%; height:auto; margin:10px 0 2px; }
   .axis,.gridline { fill:none; stroke:#c8c8c0; stroke-width:1; }
   .gridline { stroke-dasharray:3 7; }
   .spectrum { fill:none; stroke:#111; stroke-width:2.5; stroke-linejoin:round; stroke-linecap:round; }
   .peak { stroke:#888; stroke-width:1; stroke-dasharray:3 5; }
-  .hero-graphic circle { fill:#111; }
-  .hero-graphic circle.peak-accent { fill: var(--accent); }
-  .hero-actions { display:flex; align-items:center; gap:28px; padding:24px 0 48px; }
-  .text-link { font-size:10px; }
-  .ticker { background:var(--ink); color:var(--paper); overflow:hidden; }
-  .ticker-inner { min-width:900px; display:flex; align-items:center; justify-content:space-around; gap:26px; padding:17px 24px; font-size:9px; letter-spacing:.12em; }
-  .ticker b { color:#777; font-weight:400; }
-  .stat-row { display:grid; grid-template-columns:repeat(4,1fr); border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
-  .stat-row div { padding:24px 18px 24px 0; display:flex; flex-direction:column; gap:12px; border-right:1px solid var(--line); }
-  .stat-row div:not(:first-child) { padding-left:22px; }
-  .stat-row div:last-child { border:0; }
-  .stat-row strong { font-size:36px; letter-spacing:-.06em; }
-  .stat-row span { color:var(--muted); font:10px/1.6 var(--mono); text-transform:uppercase; }
-  .dark { background:#11110f; color:#f5f5f2; }
-  .dark .section-head p { color:#a5a59e; }
-  .dark .eyebrow { color:#a5a59e; }
-  .feature-grid { display:grid; grid-template-columns:repeat(4,1fr); border-top:1px solid #454540; border-bottom:1px solid #454540; }
-  .feature { min-height:260px; padding:24px 22px 20px 0; border-right:1px solid #454540; position:relative; }
-  .feature:not(:first-child) { padding-left:22px; }
-  .feature:last-child { border:0; }
-  .feature h3 { font-size:21px; line-height:1.2; letter-spacing:-.04em; font-weight:600; margin:42px 0 12px; }
-  .feature p { font-size:13px; line-height:1.7; color:#a5a59e; }
-  .feature-arrow { position:absolute; bottom:18px; right:20px; font-size:17px; }
-  .feature-arrow.accent { color: var(--accent); }
-  .tab-strip { display:flex; flex-wrap:wrap; gap:0; margin-top:44px; border-top:1px solid #454540; }
-  .tab { padding:16px 18px 16px 0; margin-right:18px; font-size:10px; letter-spacing:.06em; color:#a5a59e; border-bottom:2px solid transparent; }
-  .tab.active { color: var(--accent); border-bottom-color: var(--accent); }
-  .parameter-layout { display:grid; grid-template-columns:1.2fr .8fr; gap:70px; align-items:start; }
-  .parameter { display:grid; grid-template-columns:50px 1fr 20px; gap:14px; align-items:center; padding:20px 0; border-top:1px solid var(--line); }
-  .parameter:last-child { border-bottom:1px solid var(--line); }
+  .app-graphic circle { fill:#111; }
+
+  .section { padding:90px 0; }
+  .panel { background:var(--soft); }
+
+  .about-layout { display:grid; grid-template-columns:1.3fr .9fr; gap:40px; align-items:start; margin-bottom:40px; }
+  .about-text p { color:var(--muted); line-height:1.85; font-size:15px; margin:0; }
+  .about-text strong { color:var(--ink); font-weight:700; }
+  .about-figure { margin:0; border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; background:var(--soft); }
+  .about-figure img { display:block; width:100%; height:260px; object-fit:cover; filter:grayscale(1) contrast(1.05); }
+  .about-figure figcaption { padding:10px 14px; font-size:9px; letter-spacing:.08em; color:var(--muted); border-top:1px solid var(--line); }
+
+  .stat-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-top:8px; }
+  .stat-card { border:1px solid var(--line); border-radius:var(--radius); padding:22px 20px; display:flex; flex-direction:column; gap:10px; background:var(--paper); }
+  .stat-card strong { font-size:30px; letter-spacing:-.03em; }
+  .stat-card span { color:var(--muted); font:10px/1.6 var(--mono); text-transform:uppercase; }
+
+  .feature-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-top:8px; }
+  .feature-card { border:1px solid var(--line); border-radius:var(--radius); padding:20px 20px 46px; position:relative; background:var(--paper); min-height:200px; }
+  .feature-card h3 { font-size:18px; line-height:1.25; letter-spacing:-.02em; font-weight:600; margin:16px 0 10px; }
+  .feature-card p { font-size:13px; line-height:1.65; color:var(--muted); }
+  .feature-arrow { position:absolute; bottom:16px; right:18px; font-size:15px; color:var(--muted); }
+  .tab-strip { display:flex; flex-wrap:wrap; gap:0; margin-top:36px; border-top:1px solid var(--line); }
+
+  .parameter-layout { display:grid; grid-template-columns:1.2fr .8fr; gap:24px; align-items:start; }
+  .panel-card { border:1px solid var(--line); border-radius:var(--radius); background:var(--paper); }
+  .parameter-list.panel-card { padding:4px 18px; }
+  .parameter { display:grid; grid-template-columns:50px 1fr 20px; gap:14px; align-items:center; padding:18px 0; border-top:1px solid var(--line); }
+  .parameter:first-child { border-top:0; }
   .parameter strong { font-size:16px; font-weight:600; }
-  .output-card { border:1px solid var(--line); padding:18px; }
-  .output-visual { height:220px; background:#e7e7e1; margin:15px 0; position:relative; overflow:hidden; }
+  .parameter-arrow { color:var(--muted); }
+  .output-card.panel-card { padding:18px; }
+  .output-visual { height:220px; background:#e7e7e1; margin:15px 0; position:relative; overflow:hidden; border-radius:6px; }
   .map-grid { position:absolute; inset:0; opacity:.65; background-image:linear-gradient(#c5c5bd 1px,transparent 1px),linear-gradient(90deg,#c5c5bd 1px,transparent 1px); background-size:22px 22px; }
   .map-grid:after { content:""; position:absolute; inset:20% 18%; background:radial-gradient(ellipse at 48% 52%, #171715 0 3%, #55554f 4% 9%, #9a9a91 10% 17%, transparent 18%); filter:blur(3px); }
   .map-cross { position:absolute; width:30px; height:30px; left:50%; top:50%; transform:translate(-50%,-50%); border:1px solid #111; border-radius:50%; }
   .map-cross:before,.map-cross:after { content:""; position:absolute; background:#111; }
   .map-cross:before { width:46px; height:1px; left:-9px; top:14px; }
   .map-cross:after { width:1px; height:46px; top:-9px; left:14px; }
-  .map-tag { position:absolute; bottom:10px; left:10px; font-size:8px; background:#f5f5f2; padding:5px 7px; }
+  .map-tag { position:absolute; bottom:10px; left:10px; font-size:8px; background:#f5f5f2; padding:5px 7px; border-radius:4px; }
   .output-card p { color:var(--muted); font-size:12px; line-height:1.7; margin-bottom:2px; }
-  .context { background:#e8e8e2; padding:100px 0; }
+
+  .context { padding:90px 0; }
   .context-inner { display:grid; grid-template-columns:1fr 2fr; gap:30px 40px; }
-  .context-inner h2 { grid-column:2; font-size:clamp(42px,7vw,84px); line-height:.98; letter-spacing:-.07em; font-weight:600; margin:0; }
+  .context-inner h2 { grid-column:2; font-size:clamp(32px,5vw,52px); line-height:1.05; letter-spacing:-.03em; font-weight:600; margin:0; }
   .context-inner h2 em { font-family:Georgia,serif; font-weight:400; }
   .context-inner p { grid-column:2; max-width:560px; color:var(--muted); line-height:1.8; margin:8px 0 0; }
-  .data-strip { border-top:1px solid var(--line); border-bottom:1px solid var(--line); display:flex; align-items:center; justify-content:space-between; gap:20px; padding:24px 0; flex-wrap:wrap; }
+
+  .data-strip { display:flex; align-items:center; justify-content:space-between; gap:20px; padding:18px 20px; flex-wrap:wrap; }
   .data-strip strong { font:11px var(--mono); letter-spacing:.06em; }
   .team-bottom { display:flex; justify-content:space-between; align-items:center; padding-top:28px; }
   .credits { display:flex; flex-direction:column; gap:8px; }
@@ -233,31 +281,26 @@ const tabs = [
   .credit-name { font:14px var(--sans); font-weight:600; letter-spacing:-.01em; text-transform:none; color:var(--ink); }
   .footer { border-top:1px solid var(--line); padding:22px 0; }
   .footer-inner { display:flex; align-items:center; justify-content:space-between; }
+
+  @media(max-width:900px) {
+    .hero-grid { grid-template-columns:1fr; }
+    .app-body { grid-template-columns:1fr; }
+    .app-sidebar { flex-direction:row; flex-wrap:wrap; border-right:0; border-bottom:1px solid var(--line); }
+  }
   @media(max-width:800px) {
     nav { display:none; }
     .topline { padding-inline:16px; }
-    .hero-title { padding:65px 0 38px; }
+    .about-layout { grid-template-columns:1fr; }
+    .stat-grid { grid-template-columns:repeat(2,1fr); }
     .feature-grid { grid-template-columns:repeat(2,1fr); }
-    .feature:nth-child(2) { border-right:0; }
-    .feature:nth-child(n+3) { border-top:1px solid #454540; }
-    .feature:nth-child(3) { padding-left:0; }
-    .parameter-layout { grid-template-columns:1fr; gap:38px; }
+    .parameter-layout { grid-template-columns:1fr; gap:24px; }
     .context-inner { grid-template-columns:1fr; }
     .context-inner h2,.context-inner p { grid-column:1; }
   }
   @media(max-width:520px) {
-    .hero-meta .eyebrow:last-child { display:none; }
-    .hero-bottom { align-items:start; gap:18px; flex-direction:column; }
-    .hero-index { text-align:left; }
-    .hero-actions { align-items:flex-start; flex-direction:column; gap:18px; }
-    .stat-row { grid-template-columns:repeat(2,1fr); }
-    .stat-row div:nth-child(2) { border-right:0; }
-    .stat-row div:nth-child(3),.stat-row div:nth-child(4) { border-top:1px solid var(--line); }
-    .stat-row div:nth-child(3) { padding-left:0; }
+    .stat-grid { grid-template-columns:1fr; }
     .feature-grid { grid-template-columns:1fr; }
-    .feature,.feature:not(:first-child) { min-height:220px; padding:22px 0; border-right:0; border-top:1px solid #454540; }
-    .feature:first-child { border-top:0; }
-    .feature h3 { margin-top:28px; }
+    .hero-actions { flex-direction:column; align-items:flex-start; gap:14px; }
     .team-bottom,.footer-inner { align-items:flex-start; flex-direction:column; gap:18px; }
     .data-strip { align-items:flex-start; flex-direction:column; }
   }
