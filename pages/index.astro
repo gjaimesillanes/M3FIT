@@ -1,18 +1,28 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 const features = [
-  ["01", "Multi-species LTE fitting", "Simultaneous modelling of molecular species within complex astronomical spectra."],
-  ["02", "Machine-learning assistance", "Guidance for transition identification, fitting strategies and large-scale analysis."],
-  ["03", "HPC-ready workflow", "Designed to process many spatial pixels across ALMA spectral cubes on SLURM-managed systems."],
-  ["04", "Spatially resolved products", "Physical-parameter maps, synthetic spectra and diagnostics for solution assessment."]
+  ["01", "Data ingestion & setup", "Upload ALMA spectral cubes, species catalogs and fitting configuration before launching a run."],
+  ["02", "SLURM-managed fitting", "Launch and monitor multi-pixel, multi-species LTE fitting jobs across HPC resources, with ML-assisted strategy selection."],
+  ["03", "Species-resolved inspection", "Browse single- and multi-species results pixel by pixel, with convergence history and live diagnostics."],
+  ["04", "Volumetric & synthetic tools", "Render 3D parameter volumes, generate synthetic spectra and inspect transition-combination maps."]
 ];
 const parameters = ["Column density · log N", "Excitation temperature · Tex", "Line-of-sight velocity · VLSR", "Linewidth · FWHM"];
+const tabs = [
+  "A. Upload",
+  "B. Launch Jobs",
+  "C. Multiple Species Viewer",
+  "D. Single Species Viewer",
+  "E. 3D Volume",
+  "TMP: Synthetic Spectra Generator",
+  "TMP: Launch Jobs by Epochs",
+  "TMP: Transition Combo Maps"
+];
 ---
 <BaseLayout>
   <div class="topline">
-    <a class="brand" href="#top"><span class="brand-mark">S.</span><span>SCIENTIFIC SOFTWARE / ASTROCHEMISTRY</span></a>
+    <a class="brand" href="#top"><span class="brand-mark">M³</span><span>AI-ITACA / ASTROCHEMISTRY SOFTWARE</span></a>
     <nav aria-label="Main navigation">
-      <a href="#about">ABOUT</a><a href="#workflow">WORKFLOW</a><a href="#science">SCIENCE</a><a href="#team">TEAM</a>
+      <a href="#about">ABOUT</a><a href="#workflow">INTERFACE</a><a href="#science">SCIENCE</a><a href="#team">TEAM</a>
     </nav>
     <a class="top-cta" href="https://github.com/" target="_blank" rel="noreferrer">GITHUB ↗</a>
   </div>
@@ -20,15 +30,15 @@ const parameters = ["Column density · log N", "Excitation temperature · Tex", 
   <main id="top">
     <section class="hero wrap">
       <div class="hero-meta">
-        <span class="eyebrow">AI-ITACA / RESEARCH SOFTWARE</span>
+        <span class="eyebrow">AI-ITACA / MMT24-CAB-01 · MOMENTUM PROGRAM</span>
         <span class="eyebrow">HPC · LTE · MACHINE LEARNING</span>
       </div>
       <div class="hero-title">
-        <p class="hero-kicker mono">Decoding molecular complexity</p>
-        <h1>SMAX<span class="period">.</span></h1>
+        <p class="hero-kicker mono">Multi-species Molecular ML-assisted FITting</p>
+        <h1>M<sup>3</sup>FIT<span class="period">.</span></h1>
         <div class="hero-bottom">
-          <p class="hero-description">Multi-species molecular spectral fitting, assisted by machine learning.</p>
-          <p class="hero-index mono">A scalable approach<br />to ALMA spectral cubes</p>
+          <p class="hero-description">HPC-based multi-species LTE spectral fitting, assisted by machine learning, for complete ALMA spectral cubes.</p>
+          <p class="hero-index mono">A SLURM-managed workflow<br />from cubes to physical maps</p>
         </div>
       </div>
       <div class="hero-graphic" aria-label="Abstract monochrome spectral line illustration">
@@ -38,47 +48,50 @@ const parameters = ["Column density · log N", "Excitation temperature · Tex", 
           <path class="gridline" d="M40 65H1100 M40 135H1100" />
           <path class="spectrum" d="M40 203 L100 202 145 200 185 201 220 197 245 188 260 100 270 185 290 198 340 201 390 199 420 193 438 150 450 196 480 201 535 199 565 194 590 75 603 188 620 198 680 201 720 199 745 182 765 120 778 190 805 199 850 201 900 200 925 188 940 45 953 185 975 199 1030 202 1100 201" />
           <path class="peak" d="M260 100V220 M590 75V220 M940 45V220" />
-          <circle cx="260" cy="100" r="4"/><circle cx="590" cy="75" r="4"/><circle cx="940" cy="45" r="4"/>
+          <circle cx="260" cy="100" r="4"/><circle class="peak-accent" cx="590" cy="75" r="4"/><circle cx="940" cy="45" r="4"/>
         </svg>
         <div class="graphic-foot mono"><span>INTENSITY</span><span>FREQUENCY →</span><span>ILLUSTRATIVE DATA</span></div>
       </div>
       <div class="hero-actions">
         <a class="button" href="#about">EXPLORE THE PROJECT <span>↘</span></a>
-        <a class="text-link mono" href="#workflow">DISCOVER THE WORKFLOW ↗</a>
+        <a class="text-link mono" href="#workflow">DISCOVER THE INTERFACE ↗</a>
       </div>
     </section>
 
     <section class="ticker" aria-label="Project keywords">
-      <div class="ticker-inner mono"><span>MOLECULAR SPECTROSCOPY</span><b>✳</b><span>LOCAL THERMODYNAMIC EQUILIBRIUM</span><b>✳</b><span>ALMA DATA</span><b>✳</b><span>HIGH-PERFORMANCE COMPUTING</span><b>✳</b><span>MACHINE LEARNING</span></div>
+      <div class="ticker-inner mono"><span>MOLECULAR SPECTROSCOPY</span><b>✳</b><span>LOCAL THERMODYNAMIC EQUILIBRIUM</span><b>✳</b><span>ALMA DATA</span><b>✳</b><span>SLURM / HPC</span><b>✳</b><span>MACHINE LEARNING</span></div>
     </section>
 
     <section id="about" class="section wrap">
       <div class="section-head">
         <span class="eyebrow">01 / THE PROJECT</span>
-        <div><h2>From complex spectra<br />to physical insight.</h2>
-          <p>SMAX is an HPC-based software framework developed within the Artificial Intelligence Integral Tool for AstroChemical Analysis (AI-ITACA). It combines multi-species Local Thermodynamic Equilibrium (LTE) modelling with machine-learning techniques to support the efficient, semi-automated analysis of complete ALMA spectral cubes.</p>
+        <div><h2>From spectral cubes<br />to physical insight.</h2>
+          <p>M³FIT (Multi-species Molecular Machine-learning-assisted FITting) is an HPC-based software tool developed within the Artificial Intelligence Integral Tool for AstroChemical Analysis (AI-ITACA, ID: MMT24-CAB-01 — Momentum program). It combines multi-species Local Thermodynamic Equilibrium (LTE) spectral fitting with machine-learning techniques to enable efficient, semi-automated characterization of complete ALMA spectral cubes.</p>
         </div>
       </div>
       <div class="stat-row">
-        <div><strong>01</strong><span>Multi-species<br />spectral modelling</span></div>
-        <div><strong>ML</strong><span>Assisted analysis<br />and optimization</span></div>
-        <div><strong>HPC</strong><span>Scalable cube<br />processing</span></div>
-        <div><strong>FITS</strong><span>Spatially resolved<br />scientific products</span></div>
+        <div><strong>HPC</strong><span>SLURM-managed<br />job orchestration</span></div>
+        <div><strong>ML</strong><span>Strategy selection<br />and convergence guidance</span></div>
+        <div><strong>LTE</strong><span>Multi-species<br />spectral modelling</span></div>
+        <div><strong>FITS</strong><span>Spatially resolved<br />physical-parameter maps</span></div>
       </div>
     </section>
 
     <section id="workflow" class="section dark">
       <div class="wrap">
         <div class="section-head">
-          <span class="eyebrow">02 / CAPABILITIES</span>
-          <div><h2>Built for the scale<br />of modern surveys.</h2>
-            <p>Designed to move from spectral identification to spatially resolved physical characterization, while keeping the fitting process inspectable.</p>
+          <span class="eyebrow">02 / INTERFACE & CAPABILITIES</span>
+          <div><h2>Built around<br />the fitting pipeline.</h2>
+            <p>Each stage of the analysis — from cube ingestion to volumetric inspection — is exposed as a dedicated tab in the application, mirroring the actual processing pipeline used to characterize ALMA spectral cubes.</p>
           </div>
         </div>
         <div class="feature-grid">
           {features.map(([n, title, desc]) => <article class="feature">
-            <span class="eyebrow">{n} / CAPABILITY</span><h3>{title}</h3><p>{desc}</p><span class="feature-arrow">↗</span>
+            <span class="eyebrow">{n} / CAPABILITY</span><h3>{title}</h3><p>{desc}</p><span class="feature-arrow accent">↗</span>
           </article>)}
+        </div>
+        <div class="tab-strip mono" aria-label="Application tabs">
+          {tabs.map((t, i) => <span class={`tab ${i === 3 ? "active" : ""}`}>{t}</span>)}
         </div>
       </div>
     </section>
@@ -87,12 +100,12 @@ const parameters = ["Column density · log N", "Excitation temperature · Tex", 
       <div class="section-head">
         <span class="eyebrow">03 / OUTPUT PARAMETERS</span>
         <div><h2>Quantifying the<br />molecular gas.</h2>
-          <p>Depending on the available observational constraints, the fitting procedure derives key physical parameters and produces diagnostic products to assess the quality of each solution.</p>
+          <p>Depending on the available observational constraints, the fitting procedure derives key physical parameters and produces spatially resolved FITS maps, synthetic LTE spectra and fitting diagnostics to assess the quality of each solution.</p>
         </div>
       </div>
       <div class="parameter-layout">
         <div class="parameter-list">
-          {parameters.map((p, i) => <div class="parameter"><span class="eyebrow">0{i+1}</span><strong>{p}</strong><span>↗</span></div>)}
+          {parameters.map((p, i) => <div class="parameter"><span class="eyebrow">0{i+1}</span><strong>{p}</strong><span class="accent">↗</span></div>)}
         </div>
         <div class="output-card">
           <span class="eyebrow">OUTPUT / PRODUCTS</span>
@@ -101,7 +114,7 @@ const parameters = ["Column density · log N", "Excitation temperature · Tex", 
             <div class="map-cross"></div>
             <span class="map-tag mono">PIXEL MAP / PREVIEW</span>
           </div>
-          <p>Spatially resolved FITS maps, synthetic LTE spectra and fitting diagnostics.</p>
+          <p>Spatially resolved FITS maps, synthetic LTE spectra and fitting diagnostics per pixel and per species.</p>
         </div>
       </div>
     </section>
@@ -110,7 +123,7 @@ const parameters = ["Column density · log N", "Excitation temperature · Tex", 
       <div class="wrap context-inner">
         <span class="eyebrow">04 / SCIENTIFIC MOTIVATION</span>
         <h2>Understanding the<br /><em>molecular inventory</em><br />of the interstellar medium.</h2>
-        <p>As observational sensitivity and spectral coverage continue to grow, automated and scalable analysis methods are essential to investigate molecular complexity and the chemical ingredients connected to prebiotic chemistry.</p>
+        <p>The increasing complexity of molecules identified in the ISM, together with the unprecedented sensitivity of facilities such as ALMA and JWST, is opening new opportunities to investigate molecular complexity. As data volumes grow further with the forthcoming ALMA Wideband Sensitivity Upgrade (WSU), automated and scalable analysis methods become essential — combining physically motivated LTE modelling, ML-assisted analysis and HPC capabilities to accelerate the extraction of astrochemical information and the study of prebiotic building blocks.</p>
       </div>
     </section>
 
@@ -118,15 +131,18 @@ const parameters = ["Column density · log N", "Excitation temperature · Tex", 
       <div class="section-head">
         <span class="eyebrow">05 / FRAMEWORK & DATA</span>
         <div><h2>Developed for<br />collaborative science.</h2>
-          <p>SMAX is developed within AI-ITACA (PI: Víctor M. Rivilla). Initial scientific exploitation will focus on molecular-source identification and characterization using ALMA datasets.</p>
+          <p>M³FIT is developed within AI-ITACA. Initial scientific exploitation focuses on molecular-source identification and characterization using datasets from the GUAPOS project and ALMA Science Verification observations.</p>
         </div>
       </div>
       <div class="data-strip">
         <span class="eyebrow">INITIAL DATASETS</span>
-        <strong>ALCHEMI</strong><strong>ALMA SCIENCE VERIFICATION</strong><strong>GUAPOS</strong>
+        <strong>GUAPOS</strong><strong>ALMA SCIENCE VERIFICATION</strong>
       </div>
       <div class="team-bottom">
-        <p class="eyebrow">AI-ITACA / RESEARCH & DEVELOPMENT</p>
+        <div class="credits">
+          <p class="eyebrow">PI · <strong class="credit-name">Victor Rivilla Rodríguez</strong></p>
+          <p class="eyebrow">Dev · <strong class="credit-name">Gabriel Jaimes Illanes</strong></p>
+        </div>
         <a class="button light" href="https://github.com/" target="_blank" rel="noreferrer">VIEW SOURCE CODE <span>↗</span></a>
       </div>
     </section>
@@ -134,8 +150,8 @@ const parameters = ["Column density · log N", "Excitation temperature · Tex", 
 
   <footer class="footer">
     <div class="wrap footer-inner">
-      <a class="brand" href="#top"><span class="brand-mark">S.</span><span>SMAX / SCIENTIFIC SOFTWARE</span></a>
-      <span class="eyebrow">© 2026 · AI-ITACA</span>
+      <a class="brand" href="#top"><span class="brand-mark">M³</span><span>M³FIT / AI-ITACA</span></a>
+      <span class="eyebrow">© 2026 · AI-ITACA · CSIC / Centro de Astrobiología</span>
       <a class="eyebrow" href="#top">BACK TO TOP ↑</a>
     </div>
   </footer>
@@ -144,7 +160,7 @@ const parameters = ["Column density · log N", "Excitation temperature · Tex", 
 <style>
   .topline { height: 76px; display:flex; align-items:center; justify-content:space-between; padding:0 max(24px, calc((100vw - 1160px)/2)); border-bottom:1px solid var(--line); gap:24px; }
   .brand { display:flex; align-items:center; gap:12px; font:10px var(--mono); letter-spacing:.08em; }
-  .brand-mark { display:grid; place-items:center; width:30px; height:30px; border:1px solid var(--ink); border-radius:50%; font:700 15px var(--sans); letter-spacing:-.08em; }
+  .brand-mark { display:grid; place-items:center; width:32px; height:32px; border:1px solid var(--ink); border-radius:50%; font:700 13px var(--sans); letter-spacing:-.04em; }
   nav { display:flex; gap:28px; font:10px var(--mono); letter-spacing:.08em; }
   .top-cta { font:10px var(--mono); border-bottom:1px solid; padding-bottom:4px; }
   .hero { padding-top:44px; }
@@ -164,6 +180,7 @@ const parameters = ["Column density · log N", "Excitation temperature · Tex", 
   .spectrum { fill:none; stroke:#111; stroke-width:2.5; stroke-linejoin:round; stroke-linecap:round; }
   .peak { stroke:#888; stroke-width:1; stroke-dasharray:3 5; }
   .hero-graphic circle { fill:#111; }
+  .hero-graphic circle.peak-accent { fill: var(--accent); }
   .hero-actions { display:flex; align-items:center; gap:28px; padding:24px 0 48px; }
   .text-link { font-size:10px; }
   .ticker { background:var(--ink); color:var(--paper); overflow:hidden; }
@@ -185,6 +202,10 @@ const parameters = ["Column density · log N", "Excitation temperature · Tex", 
   .feature h3 { font-size:21px; line-height:1.2; letter-spacing:-.04em; font-weight:600; margin:42px 0 12px; }
   .feature p { font-size:13px; line-height:1.7; color:#a5a59e; }
   .feature-arrow { position:absolute; bottom:18px; right:20px; font-size:17px; }
+  .feature-arrow.accent { color: var(--accent); }
+  .tab-strip { display:flex; flex-wrap:wrap; gap:0; margin-top:44px; border-top:1px solid #454540; }
+  .tab { padding:16px 18px 16px 0; margin-right:18px; font-size:10px; letter-spacing:.06em; color:#a5a59e; border-bottom:2px solid transparent; }
+  .tab.active { color: var(--accent); border-bottom-color: var(--accent); }
   .parameter-layout { display:grid; grid-template-columns:1.2fr .8fr; gap:70px; align-items:start; }
   .parameter { display:grid; grid-template-columns:50px 1fr 20px; gap:14px; align-items:center; padding:20px 0; border-top:1px solid var(--line); }
   .parameter:last-child { border-bottom:1px solid var(--line); }
@@ -207,6 +228,9 @@ const parameters = ["Column density · log N", "Excitation temperature · Tex", 
   .data-strip { border-top:1px solid var(--line); border-bottom:1px solid var(--line); display:flex; align-items:center; justify-content:space-between; gap:20px; padding:24px 0; flex-wrap:wrap; }
   .data-strip strong { font:11px var(--mono); letter-spacing:.06em; }
   .team-bottom { display:flex; justify-content:space-between; align-items:center; padding-top:28px; }
+  .credits { display:flex; flex-direction:column; gap:8px; }
+  .credits .eyebrow { margin:0; display:flex; align-items:baseline; gap:6px; }
+  .credit-name { font:14px var(--sans); font-weight:600; letter-spacing:-.01em; text-transform:none; color:var(--ink); }
   .footer { border-top:1px solid var(--line); padding:22px 0; }
   .footer-inner { display:flex; align-items:center; justify-content:space-between; }
   @media(max-width:800px) {
