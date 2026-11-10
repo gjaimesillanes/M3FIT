@@ -95,8 +95,8 @@ const metrics = [
     <section id="workflow" class="section panel">
       <div class="wrap">
         <div class="plot-figure">
-          <div id="spectrum-chart" class="spectrum-chart" data-src="/M3FIT/data/ch3ocho_spectrum.json" aria-label="Interactive CH3OCHO region average spectrum, zoomable and pannable"></div>
-          <p class="plot-figure-caption">CH₃OCHO region average spectrum — G31.41+0.31. Drag to zoom, double-click to reset, scroll to pan.</p>
+          <div id="spectrum-chart" class="spectrum-chart" data-src="/M3FIT/data/ch3ocho_spectrum.json" aria-label="Interactive CH3OCHO pixel x=124, y=123 spectrum, zoomable and pannable"></div>
+          <p class="plot-figure-caption">CH₃OCHO spectrum — G31.41+0.31, pixel x=124, y=123. Drag to zoom, double-click to reset, scroll to pan.</p>
         </div>
         <div class="section-head">
           <span class="eyebrow">02 / WORKFLOW</span>
@@ -219,25 +219,25 @@ const metrics = [
 
           var traces = [
             {
-              x: data.freq_ghz,
-              y: data.synthetic_alltrans,
+              x: data.synthetic_alltrans.freq_ghz,
+              y: data.synthetic_alltrans.value,
               mode: 'lines',
               name: 'Synthetic all-trans',
               line: { color: '#4caf50', width: 1.2 },
               opacity: 0.85,
             },
             {
-              x: data.freq_ghz,
-              y: data.synthetic_selected,
+              x: data.synthetic_selected.freq_ghz,
+              y: data.synthetic_selected.value,
               mode: 'lines',
               name: 'Synthetic selected',
               line: { color: '#1f6feb', width: 1.6 },
             },
             {
-              x: data.freq_ghz,
-              y: data.observed,
+              x: data.observed.freq_ghz,
+              y: data.observed.value,
               mode: 'lines',
-              name: 'Observed (region avg)',
+              name: 'Observed',
               line: { color: '#111111', width: 1.3 },
             },
           ];
@@ -251,11 +251,15 @@ const metrics = [
             };
           });
 
-          var fullRange = [Math.min.apply(null, data.freq_ghz), Math.max.apply(null, data.freq_ghz)];
-          var initialRange = data.default_range_ghz || fullRange;
+          var initialRange = data.default_range_ghz || [
+            Math.min.apply(null, data.observed.freq_ghz),
+            Math.max.apply(null, data.observed.freq_ghz),
+          ];
+
+          var pixelLabel = data.pixel ? (' \u2014 pixel x=' + data.pixel.x + ', y=' + data.pixel.y) : '';
 
           Plotly.newPlot(el, traces, {
-            title: { text: (data.species || '') + ': region average spectrum', font: { size: 15, family: 'DM Mono, monospace', color: '#111' } },
+            title: { text: (data.species || '') + ': ' + (data.source || '') + pixelLabel, font: { size: 15, family: 'DM Mono, monospace', color: '#111' } },
             xaxis: { title: 'Frequency (GHz)', range: initialRange, gridcolor: '#eee', zeroline: false },
             yaxis: { title: 'T_B (K)', gridcolor: '#eee', zeroline: true, zerolinecolor: '#ddd' },
             shapes: shapes,
